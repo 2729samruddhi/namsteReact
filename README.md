@@ -17,3 +17,15 @@
     - `Create an Element`
     - `Create nested React Elements`
     - `Use root.render`
+
+    # parcel
+    -Dev
+    -local server
+    -HMR - Hot module replacement
+    -File watching algorithm - written in C++
+    -caching-faster builds
+    -Image Optimization
+    -minification
+    -Bundling
+    -compress
+
