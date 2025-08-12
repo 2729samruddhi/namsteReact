@@ -3,3 +3,5 @@ export const comman_URL =
 
 export const logo_URL = 
 "https://static.vecteezy.com/system/resources/thumbnails/008/687/818/small/food-delivery-logo-free-vector.jpg"
+
+export const MENU_API = "https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=16.706369&lng=74.2481772&restaurantId=";
