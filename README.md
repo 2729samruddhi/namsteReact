@@ -1,6 +1,4 @@
-## Namaste React Course by Akshay Saini
 
-# _Episode 01 - Inception_
 
 ## Coding :
 
