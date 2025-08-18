@@ -46,29 +46,29 @@ const Body = () => {
   //  ):
   return (
     <div className="body">
-      <div className="filter">
+      <div className="flex mt-5 gap-10">
         <button
-          className="filter-btn"
+          className="px-4 ml-5 py-2 bg-fuchsia-200 items-center rounded-lg font-semibold hover:bg-fuchsia-300 transition"
           onClick={() => {
             const restroList = restaurantList.filter(
               (res) => res?.info?.avgRating >= 4
             );
-            setFilteredRestroList(restroList); // ✅ update display list
+            setFilteredRestroList(restroList); 
           }}
         >
           Top Rated Restaurant
         </button>
 
-        <div className="search">
+        <div className="gap-2">
           <input
             type="text"
-            className="search-box"
+            className="bg-slate-100 px-20 py-2 rounded-lg w-90 focus:outline-none focus:ring-2 focus:ring-orange-200"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
           />
 
           <button
-            className="search-btn"
+            className="px-5 py-2 rounded-lg bg-green-400 ml-3 text-md font-semibold items-center hover:bg-green-200 transition"
             onClick={() => {
               console.log("button clicked");
               const filterdList = restaurantList.filter((res) =>
@@ -81,7 +81,7 @@ const Body = () => {
           </button>
         </div>
       </div>
-      <div className="restro-container">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8 ml-3 mr-3">
         {filteredRestroList.map((restaurant) => (
           <Link key={restaurant?.info?.id} to={"/city/kolhapur/"+restaurant?.info?.id }>
          <Restaurant  resData={restaurant} /> 
