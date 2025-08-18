@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useRestaurantMenu from "../utils/useRestaurantMenu";
 import Shimmer from "./Shimmer";
+import RestaurantCategory from "./RestaurantCategory";
 
 
 const RestaurantMenu = () => {
@@ -20,13 +21,23 @@ const RestaurantMenu = () => {
 const menuCard = regularCards.find(c => c?.card?.card?.itemCards);
 const itemCards = menuCard?.card?.card?.itemCards || [];
 
+const categories =
+  resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter((c)=>c.card?.["card"]?.["@type"]===
+  "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+);;
 
 
+//  categories.filter((c)=>c.card?.["card"]?.["@type"]===
+//   "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+// );
+
+  console.log(categories);
+  
   return (
-    <div className="menu">
-      <h1>{name}</h1>
-      <p>{cuisines?.join(", ")}</p>
-      <p>⭐ {avgRating}</p>
+    <div className="text-center">
+      <h1 className="font-bold my-4 text-2xl">{name}</h1>
+       <p className="font-bold text-lg">{cuisines?.join(", ")}</p>
+     {/*<p>⭐ {avgRating}</p>
       <h3>Menu</h3>
       <ul>
         {itemCards.map((item) => (
@@ -34,7 +45,9 @@ const itemCards = menuCard?.card?.card?.itemCards || [];
           {item?.card?.info?.name} - {item?.card?.info?.defaultPrice/100 || item?.card?.info?.price/100}
           </li>
         ))}
-      </ul>
+      </ul> */}
+
+      {/* {categories.map((category)=>(<RestaurantCategory data={category?.card?.card}/>))} */}
     </div>
   );
 };

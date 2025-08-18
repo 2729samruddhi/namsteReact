@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import Restaurant from "./Restaurant";
+import Restaurant, { withPromotedLabel } from "./Restaurant";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 
@@ -11,6 +11,7 @@ const Body = () => {
   const [filteredRestroList, setFilteredRestroList] = useState([]);
   const [searchText, setSearchText] = useState("");
   const onlineStatus = useOnlineStatus();
+  const RestaurantCardPromoted = withPromotedLabel(Restaurant);
  
   useEffect(() => {
     fetchData();
@@ -37,7 +38,9 @@ const Body = () => {
       setFilteredRestroList(restaurants);
     }
   };
-   
+   console.log("body rendered...",restaurantList);
+    
+
   if(onlineStatus === false) return <h1>Looks Like a You're offline! Please check your Network!</h1>
     
 
@@ -84,7 +87,12 @@ const Body = () => {
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8 ml-3 mr-3">
         {filteredRestroList.map((restaurant) => (
           <Link key={restaurant?.info?.id} to={"/city/kolhapur/"+restaurant?.info?.id }>
-         <Restaurant  resData={restaurant} /> 
+
+          {restaurant.info.promoted ?(
+            <RestaurantCardPromoted  resData={restaurant} /> ):( <Restaurant  resData={restaurant} />
+          )}
+
+         {/* <Restaurant  resData={restaurant} />  */}
          </Link>
         ))}
       </div>
