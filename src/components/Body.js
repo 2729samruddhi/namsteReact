@@ -38,7 +38,7 @@ const Body = () => {
       setFilteredRestroList(restaurants);
     }
   };
-   console.log("body rendered...",restaurantList);
+   //console.log("body rendered...",restaurantList);
     
 
   if(onlineStatus === false) return <h1>Looks Like a You're offline! Please check your Network!</h1>

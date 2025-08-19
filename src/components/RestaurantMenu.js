@@ -22,14 +22,9 @@ const menuCard = regularCards.find(c => c?.card?.card?.itemCards);
 const itemCards = menuCard?.card?.card?.itemCards || [];
 
 const categories =
-  resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter((c)=>c.card?.["card"]?.["@type"]===
-  "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
-);;
-
-
-//  categories.filter((c)=>c.card?.["card"]?.["@type"]===
-//   "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
-// );
+  resInfo?.cards
+  ?.find(c => c?.groupedCard)?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter((c)=>c.card?.["card"]?.["@type"]===
+  "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory") || [];
 
   console.log(categories);
   
@@ -47,7 +42,11 @@ const categories =
         ))}
       </ul> */}
 
-      {/* {categories.map((category)=>(<RestaurantCategory data={category?.card?.card}/>))} */}
+      {categories.map((category)=>(
+        <RestaurantCategory 
+        key={category?.card?.card?.title} 
+      data={category?.card?.card}
+      />))}
     </div>
   );
 };
