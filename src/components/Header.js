@@ -1,11 +1,13 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { logo_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContexts from "../utils/UserContexts";
 
 const Header = () => {
   const[btnNameReact,setBtnNameReact]= useState("LogIn")
   const onlineStatus = useOnlineStatus();
+  const {loggedInUser} = useContext(UserContexts)
   return (
     <div className="flex items-center p-2 shadow-md bg-green-50">
       <div className="w-[130px] items-center shadow-md bg-green-50">
@@ -16,7 +18,7 @@ const Header = () => {
       </div>
 
       <div className="ml-auto ">
-        <ul className="flex gap-6 items-center text-lg cursor-pointer">
+        <ul className="flex gap-5 items-center text-lg cursor-pointer mr-2">
           <li>onlineStatus: {onlineStatus? "✅":"🔴"}</li>
           <li> <Link to={"/"}> Home</Link></li>
           <li><Link to={"/about"}> About Us </Link>  </li>
@@ -32,6 +34,7 @@ const Header = () => {
           }}>
           {btnNameReact}
           </button>
+          <li>{loggedInUser}</li>
         </ul>
       </div>
     </div>

@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Restaurant, { withPromotedLabel } from "./Restaurant";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContexts from "../utils/UserContexts";
 
 //import Shimmer from "./Shimmer";
 
@@ -11,6 +12,7 @@ const Body = () => {
   const [filteredRestroList, setFilteredRestroList] = useState([]);
   const [searchText, setSearchText] = useState("");
   const onlineStatus = useOnlineStatus();
+  const {setUserName,loggedInUser} = useContext(UserContexts);
   const RestaurantCardPromoted = withPromotedLabel(Restaurant);
  
   useEffect(() => {
@@ -62,7 +64,7 @@ const Body = () => {
           Top Rated Restaurant
         </button>
 
-        <div className="gap-2">
+        <div className="gap-2 flex">
           <input
             type="text"
             className="bg-slate-100 px-20 py-2 rounded-lg w-90 focus:outline-none focus:ring-2 focus:ring-orange-200"
@@ -82,6 +84,17 @@ const Body = () => {
           >
             Search
           </button>
+
+        <div className="gap-2">
+          <label>User:</label>
+            <input
+            type="text"
+            className="bg-slate-100 px-20 py-2 rounded-lg w-50 border-black"
+            value={loggedInUser}
+            onChange={(e) => setUserName(e.target.value)}
+          />
+          </div>
+
         </div>
       </div>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8 ml-3 mr-3">
