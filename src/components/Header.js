@@ -28,8 +28,8 @@ const Header = () => {
           <li><Link to={"/about"}> About Us </Link>  </li>
           <li><Link to={"/contact"}> Contact Us</Link> </li>
           <li><Link to={"/grocery"}> Grocery</Link> </li>
-
-          <li>Cart ({cartItems.length} items)</li>
+          <li><Link to={"/cart"}> Cart ({cartItems.length} items)</Link></li>
+            
           <button className="px-5 py-1 mr-3 bg-orange-400 text-white rounded-lg"
           onClick={()=>{
             btnNameReact === "LogIn" ?

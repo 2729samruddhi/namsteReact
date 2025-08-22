@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { addItem } from "../utils/cartSlice";
 
 const ItemList = ({ items }) => {
-  //console.log(items);
+  console.log(items);
   const dispatch = useDispatch()
 
   const handleAddItem=(item)=>{
@@ -25,7 +25,7 @@ const ItemList = ({ items }) => {
               </span>
               <br />
               <span className="text-black text-lg font-semibold">
-                ₹ {item?.card?.info?.price / 100}
+                ₹ {item?.card?.info?.price / 100 || item?.card?.info?.defaultPrice/100}
               </span> <br/>
                {
                 item.card.info.ratings.aggregatedRating.rating && item.card.info.ratings.aggregatedRating.ratingCountV2 &&(

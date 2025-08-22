@@ -3,6 +3,7 @@ import Restaurant, { withPromotedLabel } from "./Restaurant";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContexts from "../utils/UserContexts";
+//import Shimmer from "./Shimmer"
 
 //import Shimmer from "./Shimmer";
 
@@ -20,12 +21,18 @@ const Body = () => {
   }, []);
 
   const fetchData = async () => {
-    const data = await fetch(
-      "https://www.swiggy.com/mapi/restaurants/list/v5?offset=0&is-seo-homepage-enabled=true&lat=16.706369&lng=74.2481772&carousel=true&third_party_vendor=1"
-    );
+    // const data = await fetch(
+    //   "https://www.swiggy.com/mapi/restaurants/list/v5?offset=0&is-seo-homepage-enabled=true&lat=16.706369&lng=74.2481772&carousel=true&third_party_vendor=1"
+    // );
     // https://corsproxy.io/?  use this before url
 
+    const data = await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=16.6748405&lng=74.2113614&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    )
+
     const json = await data.json();
+    console.log(json);
+    
     
     // const cards = json?.data?.cards;
     // const restaurantCard = cards?.find((c) => c?.card?.card?.id?.includes("restaurant_grid_listing") );
@@ -49,10 +56,10 @@ const Body = () => {
   if(onlineStatus === false) return <h1>Looks Like a You're offline! Please check your Network!</h1>
     
 
-  //  return  restaurantList.length ===0 ?(
+  //  return restaurantList.length ===0 ?(
   //   <Shimmer/>
   //  ):
-  return (
+  return  (
     <div className="body">
       <div className="flex mt-5 gap-10">
         <button
