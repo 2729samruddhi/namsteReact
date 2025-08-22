@@ -27,18 +27,21 @@ const Body = () => {
 
     const json = await data.json();
     
-    const cards = json?.data?.cards;
-    const restaurantCard = cards?.find((c) => c?.card?.card?.id?.includes("restaurant_grid_listing") );
-    const restaurants = restaurantCard?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+    // const cards = json?.data?.cards;
+    // const restaurantCard = cards?.find((c) => c?.card?.card?.id?.includes("restaurant_grid_listing") );
+    // const restaurants = restaurantCard?.card?.card?.gridElements?.infoWithStyle?.restaurants;
 
-    if (restaurants && Array.isArray(restaurants)) {
-      const names = restaurants
-        .map((res) => res?.info?.name)
-        .filter((name) => typeof name === "string");
-      console.log("Restaurant names:", names);
-      setRestaurantList(restaurants);
-      setFilteredRestroList(restaurants);
-    }
+    // if (restaurants && Array.isArray(restaurants)) {
+    //   const names = restaurants
+    //     .map((res) => res?.info?.name)
+    //     .filter((name) => typeof name === "string");
+    //   console.log("Restaurant names:", names);
+    //   setRestaurantList(restaurants);
+    //   setFilteredRestroList(restaurants);
+    // }
+       
+       setRestaurantList(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+       setFilteredRestroList(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
   };
    //console.log("body rendered...",restaurantList);
     

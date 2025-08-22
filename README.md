@@ -27,3 +27,14 @@
     -Bundling
     -compress
 
+    # type of routing in our web app
+    - client-side routing
+    - server-side routing
+
+    # Redux ToolKit
+    - Install npm install @reduxjs/toolkit and  react-redux
+    - Build our store
+    - connect our store to our app
+    - slice (cartSlice)
+    - dispatch (action)
+    - selector
