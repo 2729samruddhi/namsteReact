@@ -5,11 +5,11 @@ import { addItem } from "../utils/cartSlice";
 
 const ItemList = ({ items }) => {
   console.log(items);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  const handleAddItem=(item)=>{
-     dispatch(addItem(item))
-  }
+  const handleAddItem = (item) => {
+    dispatch(addItem(item));
+  };
 
   return (
     <div>
@@ -25,18 +25,26 @@ const ItemList = ({ items }) => {
               </span>
               <br />
               <span className="text-black text-lg font-semibold">
-                ₹ {item?.card?.info?.price / 100 || item?.card?.info?.defaultPrice/100}
-              </span> <br/>
-               {
-                item.card.info.ratings.aggregatedRating.rating && item.card.info.ratings.aggregatedRating.ratingCountV2 &&(
+                ₹{" "}
+                {item?.card?.info?.price / 100 ||
+                  item?.card?.info?.defaultPrice / 100}
+              </span>{" "}
+              <br />
+              {item?.card?.info?.ratings?.aggregatedRating?.rating &&
+                item?.card?.info?.ratings?.aggregatedRating?.ratingCountV2 && (
                   <div className="flex">
-               <span className="text-green-800">❇️{item.card.info.ratings.aggregatedRating.rating}</span>
-                <p>({item.card.info.ratings.aggregatedRating.ratingCountV2})</p>
-                </div>
-                )
-               }    
+                    <span className="text-green-800">
+                      ❇️{item?.card?.info?.ratings?.aggregatedRating?.rating }
+                    </span>
+                    <p>
+                      ({ item?.card?.info?.ratings?.aggregatedRating?.ratingCountV2})
+                    </p>
+                  </div>
+                )}
             </div>
-            <p className="text-gray-700 font-sans leading-snug">{item?.card?.info?.description}</p>
+            <p className="text-gray-700 font-sans leading-snug">
+              {item?.card?.info?.description}
+            </p>
           </div>
 
           <div className="w-3/12 p-4 relative">
@@ -44,7 +52,10 @@ const ItemList = ({ items }) => {
               className="w-full h-[140px] object-cover rounded-2xl"
               src={comman_URL + item?.card?.info?.imageId}
             />
-            <button className="absolute bottom-2 left-1/2 -translate-x-1/2 text-lg bg-white text-green-500 font-bold p-2 px-5 rounded-lg shadow-md" onClick={()=>handleAddItem(item)}>
+            <button
+              className="absolute bottom-2 left-1/2 -translate-x-1/2 text-lg bg-white text-green-500 font-bold p-2 px-5 rounded-lg shadow-md"
+              onClick={() => handleAddItem(item)}
+            >
               ADD+
             </button>
           </div>
