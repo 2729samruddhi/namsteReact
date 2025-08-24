@@ -3,10 +3,7 @@ import Restaurant, { withPromotedLabel } from "./Restaurant";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContexts from "../utils/UserContexts";
-//import Shimmer from "./Shimmer"
-
-//import Shimmer from "./Shimmer";
-
+import Shimmer from "./Shimmer"
 
 const Body = () => {
   const [restaurantList, setRestaurantList] = useState([]);
@@ -56,10 +53,10 @@ const Body = () => {
   if(onlineStatus === false) return <h1>Looks Like a You're offline! Please check your Network!</h1>
     
 
-  //  return restaurantList.length ===0 ?(
-  //   <Shimmer/>
-  //  ):
-  return  (
+   return restaurantList.length ===0 ?(
+    <Shimmer/>
+   ):
+   (
     <div className="body">
       <div className="flex mt-5 gap-10">
         <button
