@@ -4,8 +4,7 @@ const Restaurant = (props) => {
   const { resData } = props;
   // console.log(resData);
 
-  const { name, cuisines, costForTwo, avgRating, cloudinaryImageId, sla } =
-    resData.info;
+  const { name, cuisines, costForTwo, avgRating, cloudinaryImageId, sla } = resData.info;
 
   return (
     <div className="bg-white rounded-2xl shadow-md overflow-hidden hover:shadow-lg hover:scale-105 transition-transform duration-200">

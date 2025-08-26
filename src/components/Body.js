@@ -28,7 +28,7 @@ const Body = () => {
     )
 
     const json = await data.json();
-    console.log(json);
+    //console.log(json);
     
     
     // const cards = json?.data?.cards;
@@ -47,7 +47,7 @@ const Body = () => {
        setRestaurantList(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
        setFilteredRestroList(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
   };
-   //console.log("body rendered...",restaurantList);
+   console.log("body rendered...",restaurantList);
     
 
   if(onlineStatus === false) return <h1>Looks Like a You're offline! Please check your Network!</h1>
