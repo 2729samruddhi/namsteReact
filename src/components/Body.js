@@ -30,30 +30,16 @@ const Body = () => {
     const json = await data.json();
     //console.log(json);
     
-    
-    // const cards = json?.data?.cards;
-    // const restaurantCard = cards?.find((c) => c?.card?.card?.id?.includes("restaurant_grid_listing") );
-    // const restaurants = restaurantCard?.card?.card?.gridElements?.infoWithStyle?.restaurants;
-
-    // if (restaurants && Array.isArray(restaurants)) {
-    //   const names = restaurants
-    //     .map((res) => res?.info?.name)
-    //     .filter((name) => typeof name === "string");
-    //   console.log("Restaurant names:", names);
-    //   setRestaurantList(restaurants);
-    //   setFilteredRestroList(restaurants);
-    // }
-       
        setRestaurantList(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
-       setFilteredRestroList(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+      setFilteredRestroList(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
   };
-   console.log("body rendered...",restaurantList);
+  // console.log("body rendered...",restaurantList);
     
 
   if(onlineStatus === false) return <h1>Looks Like a You're offline! Please check your Network!</h1>
     
 
-   return restaurantList.length ===0 ?(
+   return restaurantList?.length === 0 ?(
     <Shimmer/>
    ):
    (
@@ -74,6 +60,7 @@ const Body = () => {
         <div className="gap-2 flex">
           <input
             type="text"
+            data-testid="searchInput"
             className="bg-slate-100 px-20 py-2 rounded-lg w-90 focus:outline-none focus:ring-2 focus:ring-orange-200"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
@@ -82,7 +69,7 @@ const Body = () => {
           <button
             className="px-5 py-2 rounded-lg bg-green-400 ml-3 text-md font-semibold items-center hover:bg-green-200 transition"
             onClick={() => {
-              console.log("button clicked");
+             // console.log("button clicked");
               const filterdList = restaurantList.filter((res) =>
                 res?.info?.name.toLowerCase().includes(searchText.toLowerCase())
               );
@@ -105,14 +92,13 @@ const Body = () => {
         </div>
       </div>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-8 ml-3 mr-3">
-        {filteredRestroList.map((restaurant) => (
+        {filteredRestroList?.map((restaurant) => (
           <Link key={restaurant?.info?.id} to={"/city/kolhapur/"+restaurant?.info?.id }>
 
           {restaurant.info.promoted ?(
             <RestaurantCardPromoted  resData={restaurant} /> ):( <Restaurant  resData={restaurant} />
           )}
 
-         {/* <Restaurant  resData={restaurant} />  */}
          </Link>
         ))}
       </div>
