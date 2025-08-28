@@ -6,5 +6,7 @@ export const logo_URL =
 
 export const MENU_API = "https://www.swiggy.com/mapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=16.706369&lng=74.2481772&restaurantId=";
 
+export const RESTAURANTLIST_API =  "https://www.swiggy.com/dapi/restaurants/list/v5?lat=16.6748405&lng=74.2113614&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
+
 export const CART_URL = 
 " https://www.reshot.com/preview-assets/icons/BAE3K9JRS7/cart-BAE3K9JRS7.svg";
