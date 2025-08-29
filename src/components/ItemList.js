@@ -15,14 +15,14 @@ const ItemList = ({ items }) => {
 
   return (
     <div>
-      {items.map((item) => {
+      {items.map((item,index) => {
         const id = item?.card?.info?.id;
         const isAdded = addedItems[id];
 
         return (
           <div
             data-testid="foodItems"
-            key={id}
+             key={`${id}-${index}`}   
             className="bg-gray-100 p-2 m-2 text-left border-b-2 border-gray-300 flex justify-between"
           >
             {/* Left section */}

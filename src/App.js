@@ -2,7 +2,7 @@ import React, { lazy, Suspense, useEffect, useState } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
-import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, Outlet, RouterProvider, useLocation } from "react-router-dom";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
@@ -12,26 +12,35 @@ import UserContexts from "./utils/UserContexts";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
 import Cart from "./components/Cart";
+import Footer from "./components/Footer";
 
 const Grocery = lazy(()=>import("./components/Grocery"))
 
 
-
 const AppLayout = () => {
   const[userName,setUserName] = useState("");
+  const location = useLocation();
   useEffect(()=>{
    const data = {
     name: "Samruddhi"
    }
    setUserName(data.name);
   },[])
+
+   // List of routes where footer should show
+  const showFooterRoutes = ["/about", "/contact", "/grocery"];
   return (
     <Provider store={appStore}>
      <UserContexts.Provider value={{loggedInUser:userName,setUserName}}>
-    <div className="app">
-      <Header />
-      <Outlet />
-    </div>
+    <div className="app flex flex-col min-h-screen">
+          <Header />
+          <div className="flex-grow">
+            <Outlet />
+          </div>
+
+          {/* ✅ Conditionally render Footer */}
+          {showFooterRoutes.includes(location.pathname) && <Footer/>}
+        </div>
      </UserContexts.Provider>
      </Provider>
   );
