@@ -30,33 +30,34 @@ const RestaurantMenu = () => {
           "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
       ) || [];
 
-   //console.log(categories);
+  //console.log(categories);
 
   return (
-    <div className="text-center">
-      <h1 className="font-bold my-4 text-2xl">{name}</h1>
-      <p className="font-bold text-lg">{cuisines?.join(", ")}</p>
-      {/*<p>⭐ {avgRating}</p>
-      <h3>Menu</h3>
-      <ul>
-        {itemCards.map((item) => (
-          <li key={item?.card?.info?.id}> 
-          {item?.card?.info?.name} - {item?.card?.info?.defaultPrice/100 || item?.card?.info?.price/100}
-          </li>
-        ))}
-      </ul> */}
+    <>
+      <div className="flex justify-center mt-5">
+        <div className="bg-gray-100  justify-center text-left p-2 m-2 border-b-2 rounded-2xl shadow-lg border-gray-300 w-[700px]">
+         <h1 className="font-bold my-4 text-2xl">{name}</h1>
+         <div className="bg-purple-400 rounded-lg">
+            <p className="font-bold text-lg">{cuisines?.join(", ")}</p>
+         </div>
+        </div>
+      </div>
 
-      {categories.map((category, index) => (
-        <RestaurantCategory
-          key={category?.card?.card?.title}
-          data={category?.card?.card}
-          showItems={index === showIndex && true}
-           setShowIndex={() =>
-      setShowIndex(showIndex === index ? null : index)
-    }
-        />
-      ))}
-    </div>
+      <div className="text-center">
+        
+        <p className="font-bold text-lg">{cuisines?.join(", ")}</p>
+        {categories.map((category, index) => (
+          <RestaurantCategory
+            key={category?.card?.card?.title}
+            data={category?.card?.card}
+            showItems={index === showIndex && true}
+            setShowIndex={() =>
+              setShowIndex(showIndex === index ? null : index)
+            }
+          />
+        ))}
+      </div>
+    </>
   );
 };
 
