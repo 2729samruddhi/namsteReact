@@ -1,6 +1,11 @@
 import React from "react";
+import toast from "react-hot-toast";
 
 const PaymentSummary = ({ totalAmount }) => {
+   const handlePaymentClick = () => {
+    toast.success(" Order placed successfully!");
+  };
+
   return (
     <div className="bg-white shadow-lg rounded-2xl p-6 sticky top-20">
       <h2 className="text-xl font-bold mb-3">Order Summary</h2>
@@ -20,7 +25,8 @@ const PaymentSummary = ({ totalAmount }) => {
         <span>Total</span>
         <span>₹{totalAmount + 30}</span>
       </div>
-      <button className="mt-4 w-full bg-green-600 text-white py-2 rounded-lg font-semibold hover:bg-green-500">
+      <button className="mt-4 w-full bg-green-600 text-white py-2 rounded-lg font-semibold hover:bg-green-500"  
+       onClick={handlePaymentClick}>
         Proceed to Checkout
       </button>
     </div>

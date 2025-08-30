@@ -13,6 +13,7 @@ import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
 import Cart from "./components/Cart";
 import Footer from "./components/Footer";
+import { Toaster } from "react-hot-toast";
 
 const Grocery = lazy(()=>import("./components/Grocery"))
 
@@ -40,6 +41,7 @@ const AppLayout = () => {
 
           {/* ✅ Conditionally render Footer */}
           {showFooterRoutes.includes(location.pathname) && <Footer/>}
+           <Toaster  position="top-center"c reverseOrder={false} /> {/* ✅ Toasts */}
         </div>
      </UserContexts.Provider>
      </Provider>

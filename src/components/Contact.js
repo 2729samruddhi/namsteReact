@@ -1,7 +1,12 @@
 import React from "react";
 import { Phone, Mail, MapPin } from "lucide-react"; 
+import toast from "react-hot-toast";
 
 const Contact = () => {
+
+  const handleSubmit=()=>{
+    toast.success("meassage send successfully...")
+  }
   return (
     <>
       <div className=" bg-gradient-to-b flex items-center justify-center p-8">
@@ -48,9 +53,10 @@ const Contact = () => {
               </div>
 
               <button
+                onClick={handleSubmit}
                 type="submit"
-                className="w-full bg-orange-500 text-white font-semibold py-2 px-4 rounded-lg shadow hover:bg-orange-600 transition"
-              >
+                className="w-full bg-orange-500 text-white font-semibold py-2 px-4 rounded-lg shadow hover:bg-orange-600
+                 transition" >
                 Send Message
               </button>
             </form>
@@ -64,7 +70,7 @@ const Contact = () => {
 
               <div className="flex items-center space-x-3 text-gray-800 font-medium">
                 <MapPin className="text-orange-500" />
-                <span>123 Food Street, Flavor Town</span>
+                <span>123 Food Street, Gourmet City, GC 12345</span>
               </div>
 
               <div className="flex items-center space-x-3 text-gray-800 font-medium">
@@ -79,11 +85,8 @@ const Contact = () => {
             </div>
           </div>
         </div>
-      </div>
-
-      
+      </div> 
     </>
   );
 };
-
 export default Contact;
