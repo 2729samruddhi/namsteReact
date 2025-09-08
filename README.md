@@ -2,20 +2,6 @@
 
 ## Coding :
 
-- Set up all the `tools in your laptop`
-  - `VS Code`
-  - `Chrome`
-  - `Extensions of Chrome`
-- Create a `new Git repo`
-- Build your `first Hello World` program using,
-  - Using `just HTML`
-  - Using `JS to manipulate the DOM`
-  - Using `React`
-    - `use CDN Links`
-    - `Create an Element`
-    - `Create nested React Elements`
-    - `Use root.render`
-
     # parcel
     -Dev
     -local server
@@ -56,3 +42,5 @@
     - Include @babel/preset-react inside my babel config
     - Install @testing-library/jest-dom
 
+ ## command for start on netlify
+     netlify dev
