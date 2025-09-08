@@ -1,22 +1,22 @@
-import React, { useEffect,useState} from "react";
-import { MENU_API } from "../utils/constants";
-
+import { useEffect, useState } from "react";
 
 const useRestaurantMenu = (resId) => {
   const [resInfo, setResInfo] = useState(null);
 
   useEffect(() => {
-    fetchMenu();
+    if (resId) {
+      fetchMenu();
+    }
   }, [resId]);
 
   const fetchMenu = async () => {
-    const data = await fetch(MENU_API + resId);
-    const json = await data?.json();
-   // console.log(json);
-    const dataObj = json?.data;
-    setResInfo(dataObj);
-    console.log(dataObj);
-    
+    try {
+      const res = await fetch(`/.netlify/functions/menu?resId=${resId}`);
+      const json = await res.json();
+      setResInfo(json?.data || null);
+    } catch (err) {
+      console.error("Error fetching menu:", err);
+    }
   };
 
   return resInfo;
